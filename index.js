@@ -11,6 +11,7 @@ const sidesRouter = require("./routes/sides.router.js");
 const curryRouter = require("./routes/curry.routes.js");
 const ordersRouter = require("./routes/orders.routes.js");
 const pricesRouter = require("./routes/prices.routes.js");
+const cronRouter = require("./routes/cron.routes.js");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/", cronRouter);
 app.use("/user", userRouter);
 app.use("/food", foodRouter);
 app.use("/get_all", getInitialDataRouter);
