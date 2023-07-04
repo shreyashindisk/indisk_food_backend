@@ -12,6 +12,7 @@ const curryRouter = require("./routes/curry.routes.js");
 const ordersRouter = require("./routes/orders.routes.js");
 const pricesRouter = require("./routes/prices.routes.js");
 const cronRouter = require("./routes/cron.routes.js");
+const terminalRouter = require("./routes/terminal.routes.js");
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/get_all", getInitialDataRouter);
 app.use("/sides", sidesRouter);
 app.use("/orders", ordersRouter);
 app.use("/prices", pricesRouter);
+app.use("/terminal", terminalRouter);
 app.use("/curry", curryRouter);
 
 mongoose.connect(
