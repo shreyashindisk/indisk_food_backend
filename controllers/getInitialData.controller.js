@@ -4,6 +4,9 @@ const {
   getAllPricesInternal,
 } = require("../controllers/prices.controllers.js");
 const { getAllCurrysInternal } = require("../controllers/curry.controllers.js");
+const {
+  getAllTerminalIdsInternal,
+} = require("../controllers/terminal.controllers.js");
 
 const getInitialData = async (req, res) => {
   try {
@@ -11,7 +14,8 @@ const getInitialData = async (req, res) => {
     const sides = await getAllSidesInternal("sales");
     const curries = await getAllCurrysInternal();
     const prices = await getAllPricesInternal();
-    res.status(200).json({ curryRiceBowl, sides, curries, prices });
+    const terminalId = await getAllTerminalIdsInternal();
+    res.status(200).json({ curryRiceBowl, sides, curries, prices, terminalId });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
